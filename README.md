@@ -1,40 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Frontend Application Documentation
+The frontend application is built using Next.js, a popular React framework for building web applications. It also uses Redux for state management, and Tailwind CSS for styling.
 
-## Getting Started
+## Key Files and Components
+pages/_document.tsx
+This is a custom Document, which is commonly used to augment your application's <html> and <body> tags. This is necessary because Next.js pages skip the definition of the surrounding document's markup. Here, the Toaster component for showing toast notifications is added to the body.
 
-First, run the development server:
+pages/index.tsx
+This is the main page of the application. It fetches the books data from the backend, and provides functionality to filter the books by category and search term. It also provides functionality to add a book to the cart.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+components/ui/dropdown-menu
+This is a dropdown menu component used for selecting a category to filter the books.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+components/ui/button
+This is a button component used throughout the application.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+components/ui/toaster
+This is a toaster component used for showing toast notifications.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+components/layouts
+This is a layout component used to wrap the main content of each page.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+slices/cartSlice
+This is a Redux slice for managing the cart state.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Running the Application
+To run the application, use the following commands:
 
-## Learn More
+npm run dev: Runs the application in development mode.
+npm run build: Builds the application for production.
+npm run start: Starts a production server.
 
-To learn more about Next.js, take a look at the following resources:
+## Dependencies
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The application has several dependencies, including:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+next: The Next.js library.
+react and react-dom: The React library and its DOM bindings.
+redux and react-redux: Libraries for managing application state.
+axios: A library for making HTTP requests.
+@radix-ui/react-*: Libraries for various UI components.
+tailwindcss: A utility-first CSS framework.
+Please refer to the package.json file for the full list of dependencies and their versions.

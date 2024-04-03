@@ -38,7 +38,7 @@ const CartPage: React.FC = () => {
 
       
         // Fetch the user's available points from the backend
-        axios.get('http://localhost:3000/customers/me',
+        axios.get(`${process.env.NEXT_PUBLIC_DATABASE_URL}/customers/me`,
             {
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -69,7 +69,7 @@ const CartPage: React.FC = () => {
             const quantity = item.quantity;
 
             // Make a secure API call to the backend to place the order
-            axios.post('http://localhost:3000/orders',
+            axios.post(`${process.env.NEXT_PUBLIC_DATABASE_URL}/orders`,
                 {
                     customerId: customerId,
                     bookId: bookId,

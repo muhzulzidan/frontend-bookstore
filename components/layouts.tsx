@@ -47,7 +47,8 @@ const Layout = ({ children }: { children: ReactNode }) => {
     }, []);
 
     const handleLogin = async () => {
-        const response = await fetch('http://localhost:3000/login', {
+        
+        const response = await fetch(`${process.env.NEXT_PUBLIC_DATABASE_URL}/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -83,7 +84,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
     };
     const handleSignUp = async () => {
         // First, sign up the user
-        const signupResponse = await fetch('http://localhost:3000/signup', {
+        const signupResponse = await fetch(`${process.env.NEXT_PUBLIC_DATABASE_URL}/signup`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -99,7 +100,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
         }
 
         // Then, log in the user
-        const loginResponse = await fetch('http://localhost:3000/login', {
+        const loginResponse = await fetch(`${process.env.NEXT_PUBLIC_DATABASE_URL}/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -120,7 +121,8 @@ const Layout = ({ children }: { children: ReactNode }) => {
         localStorage.setItem('access_token', data.access_token);
 
         // Create a new customer
-        const customerResponse = await fetch('http://localhost:3000/customers', {
+        
+        const customerResponse = await fetch(`${process.env.NEXT_PUBLIC_DATABASE_URL}/customers`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

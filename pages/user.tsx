@@ -22,7 +22,7 @@ const OrderPage: React.FC = () => {
         // Get the bearer token from localStorage
         const token = localStorage.getItem('access_token');
         // Fetch the customer data from the API
-        axios.get('http://localhost:3000/customers',
+        axios.get(`${process.env.NEXT_PUBLIC_DATABASE_URL}/customers`,
             {
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -37,7 +37,7 @@ const OrderPage: React.FC = () => {
                 console.error('Failed to fetch customers:', error);
             });
         // Fetch the books data from the API
-        axios.get('http://localhost:3000/books',
+        axios.get(`${process.env.NEXT_PUBLIC_DATABASE_URL}/books`,
             {
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -53,7 +53,7 @@ const OrderPage: React.FC = () => {
             });
 
         // Fetch the user's available points from the backend
-        axios.get('http://localhost:3000/customers/me',
+        axios.get(`${process.env.NEXT_PUBLIC_DATABASE_URL}/customers/me`,
             {
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -63,7 +63,7 @@ const OrderPage: React.FC = () => {
             .then(response => {
                 console.log(response.data.customerId);
                 setCustomerId(response.data.customerId); 
-                axios.get(`http://localhost:3000/orders/${customerId}`,
+                axios.get(`${process.env.NEXT_PUBLIC_DATABASE_URL}/orders/${customerId}`,
                     {
                         headers: {
                             'Authorization': `Bearer ${token}`
@@ -89,8 +89,7 @@ const OrderPage: React.FC = () => {
         const token = localStorage.getItem('access_token');
         
         console.log(token, "access_token");
-
-        axios.delete(`http://localhost:3000/orders/${orderId}/cancel/`,
+        axios.delete(`${process.env.NEXT_PUBLIC_DATABASE_URL}/orders/${orderId}/cancel/`,
             {
                 headers: {
                     'Authorization': `Bearer ${token}`

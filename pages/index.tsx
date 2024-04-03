@@ -36,7 +36,8 @@ export default function Home() {
 
   
   React.useEffect(() => {
-    fetch('http://localhost:3000/books') // replace with your NestJS backend URL
+    console.log(process.env.NEXT_PUBLIC_DATABASE_URL)
+    fetch(`${process.env.NEXT_PUBLIC_DATABASE_URL}/books`)
       .then(response => response.json())
       .then(data => {
         // Initialize the quantity for each item
